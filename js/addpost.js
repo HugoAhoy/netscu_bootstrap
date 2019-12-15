@@ -51,6 +51,12 @@ submitPost=function (){
         success:function(data, status){ 
             console.log("data= ",data, "status=", status);
             localStorage.setItem("token", thistoken);
+            if(data.success === true){
+                self.location.href="PostDetail.html?postid="+data.id;
+            }
+            else{
+                alert("发布帖子失败");
+            }
         }
     }); 
 

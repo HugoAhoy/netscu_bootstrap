@@ -11,6 +11,7 @@ $(function()
     }
     else{
         getBasicInfo();
+        setBasic();
     }
 });
 $(window).scroll(function () {
@@ -31,7 +32,7 @@ gotoDetail=function(id){
     self.location.href="PostDetail.html?postid="+id;
 }
 
-renderPostBasic = function(data){
+renderPostBasic = function(data, Finish){
     let content = $("#PostBasicContents").html();
     // console.log(content);
     // console.log("here1");
@@ -45,19 +46,45 @@ renderPostBasic = function(data){
         content +="            <p>"+data[i].summary +"</p>";
         content +="        </div>";
         content +="        <div class=\"panel-footer\">";
-        content +="            <button type=\"button\" onclick=\"gotoDetail("+data[i].id+")\" class=\"btn btn-primary\">详情</button>";
+        content +="            <div class=\"row\">";
+        content +="                <div class=\"col-xs-2 col-sm-2 col-md-2 col-lg-2\">";
+        content +="                    <a href=\"javascript:gotoDetail("+data[i].id+");\">";
+        content +="                        <span class=\"glyphicon glyphicon-align-justify\" style=\"color: rgb(246, 141, 0);\"></span>";
+        content += "                   </a>";
+        content +="                </div>";
+
+        content +="                <div class=\"col-xs-2 col-xs-offset-5 col-sm-2 col-sm-offset-5 col-md-2 col-md-offset-5 col-lg-2 col-lg-offset-5\">";
+        content +="                    <i class=\"fa fa-fw fa-eye\"></i>"+data[i].viewNum;
+        content +="                </div>";
+
+        content +="                <div class=\"col-xs-2 col-xs-offset-1 col-sm-2 col-sm-offset-1 col-md-2 col-md-offset-1 col-lg-2 col-lg-offset-1\">";
+        content +="                    <i class=\"fa fa-fw fa-bookmark\"></i>"+data[i].collectionNum;
+        content +="                </div>";
+
+        content +="            </div>";
+        // content +="            <button type=\"button\" onclick=\"gotoDetail("+data[i].id+")\" class=\"btn btn-primary\">详情</button>";
         content +="        </div>";
         content +="    </div>";
         content +="</div>";
     }
+    content +="<ul class=\"pager\">";
+    var currenPage = localStorage.getItem("page");
+    if(currenPage === "1"){
+        content +="<li><a href=\"javascript:changePage(1);\">&raquo;</a></li>";
+    }
+    if(Finish === true){
+        content +="<li><a href=\"javascript:changePage(-1);\">&laquo;</a></li>";
+    }
+    content +="</ul>";
     // console.log(content);
     $("#PostBasicContents").html(content);
 }
 
 getBasicInfo = function(){
     console.log("exe");
-    var numPerPage = 10;
-    var page = $("#currentPage").val();
+    var numPerPage = 9;
+    var page = localStorage.getItem("page");
+    // var page = $("#currentPage").val();
     // 获取信息
     var thistoken = localStorage.getItem("token");
     // tokentouse = thistoken;
@@ -72,7 +99,7 @@ getBasicInfo = function(){
         success:function(data, status){ 
             console.log("data= ",data, "status=", status);
             // localStorage.setItem("token", thistoken);
-            renderPostBasic(data.data);
+            renderPostBasic(data.data, data.Finish);
             // localStorage.removeItem("token");
             // localStorage.setItem("token", thistoken);
             // var newtoken = localStorage.getItem("token");
@@ -81,4 +108,26 @@ getBasicInfo = function(){
         }
     });
     $("#currentPage").val(eval(page)+1);    
+}
+
+changePage=function(direction){
+    if(direction === -1){
+        var page = localStorage.getItem("page");
+        page = eval(page) - 1;
+        localStorage.setItem("page", page);
+    }
+    else{
+        var page = localStorage.getItem("page");
+        page = eval(page) + 1;
+        localStorage.setItem("page", page);
+    }
+    self.location.href="home.html";
+}
+
+setBasic=function(){
+    var username = localStorage.getItem("username");
+    var user = "<a style=\"cursor:default;\"><strong>"+username+"</strong></a>";
+    console.log(username);
+    console.log(user);
+    $("li#userinfo").html(user);
 }

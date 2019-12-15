@@ -11,7 +11,7 @@
         <title>NETSCU</title>
     </head>
     <body class="cm-no-transition cm-1-navbar">
-        <input type="hidden" id="currentPage" value="1">
+        <!-- <input type="hidden" id="currentPage" value="1"> -->
         <div id="cm-menu">
             <nav class="cm-navbar cm-navbar-primary">
                 <div class="cm-flex"><a href="home.html"></a><h1>NETSCU</h1></div>
@@ -35,14 +35,14 @@
                 <div class="cm-flex">
                     <h1>首页</h1> 
                     <form id="cm-search" action="search.html" method="get">
-                        <input type="search" name="q" autocomplete="off" placeholder="Search...">
+                        <input type="search" name="q" autocomplete="off" placeholder="找些帖子...">
                     </form>
                 </div>
                 <div class="pull-right">
                     <div id="cm-search-btn" class="btn btn-primary md-search-white" data-toggle="cm-search"></div>
                 </div>
                 <div class="dropdown pull-right">
-                    <button class="btn btn-primary md-notifications-white" data-toggle="dropdown"> <span class="label label-danger">23</span> </button>
+                    <button class="btn btn-primary md-notifications-white" data-toggle="dropdown"> <span class="label label-danger">5</span> </button>
                     <div class="popover cm-popover bottom">
                         <div class="arrow"></div>
                         <div class="popover-content">
@@ -65,10 +65,36 @@
                                     </h4>
                                     <p class="list-group-item-text">Best check yo self, you're not looking too good.</p>
                                 </a>
+                                <a href="#" class="list-group-item">
+                                    <h4 class="list-group-item-heading">
+                                        <i class="fa fa-fw fa-envelope"></i> Aliquam orci lectus
+                                    </h4>
+                                    <p class="list-group-item-text">Donec quis arcu non risus sagittis</p>
+                                </a>
+
                             </div>
-                            <div style="padding:10px"><a class="btn btn-success btn-block" href="#">Show me more...</a></div>
+                            <div style="padding:10px"><a class="btn btn-success btn-block" href="#">全部已读</a></div>
                         </div>
                     </div>
+                </div>
+
+                <div class="dropdown pull-right">
+                    <button class="btn btn-primary md-account-circle-white" data-toggle="dropdown"></button>
+                    <ul class="dropdown-menu">
+                        <li id="userinfo" class="disabled text-center">
+                            <a style="cursor:default;"><strong></strong></a>
+                        </li>
+                        <li class="divider"></li>
+                        <li>
+                            <a href="profile.html"><i class="fa fa-fw fa-user"></i> 个人信息</a>
+                        </li>
+                        <li>
+                            <a href="setting.html"><i class="fa fa-fw fa-cog"></i> 编辑信息</a>
+                        </li>
+                        <li>
+                            <a href="login.html"><i class="fa fa-fw fa-sign-out"></i> 退出登录</a>
+                        </li>
+                    </ul>
                 </div>
 
             </nav>
