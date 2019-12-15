@@ -11,7 +11,7 @@
         <title>NETSCU</title>
     </head>
     <body class="cm-no-transition cm-1-navbar">
-        <input type="hidden" id="currentPage" value="1">
+        <!-- <input type="hidden" id="currentPage" value="1"> -->
         <div id="cm-menu">
             <nav class="cm-navbar cm-navbar-primary">
                 <div class="cm-flex"><a href="home.html"></a><h1>NETSCU</h1></div>
@@ -21,10 +21,10 @@
                 <div id="cm-menu-items-wrapper">
                     <div id="cm-menu-scroller">
                         <ul class="cm-menu-items">
-                            <li><a href="home.html" class="sf-house">首页</a></li>
+                            <li class="active"><a href="home.html" class="sf-house">首页</a></li>
                             <li><a href="notepad.html" class="sf-notepad">发帖</a></li>
                             <li><a href="channel.html" class="sf-brick">板块</a></li>
-                            <li  class="active"><a href="mine.html" class="sf-user-id">我的</a></li>
+                            <li><a href="mine.html" class="sf-user-id">我的</a></li>
                         </ul>
                     </div>
                 </div>
@@ -35,16 +35,16 @@
             <nav class="cm-navbar cm-navbar-primary">
                 <div class="btn btn-primary md-menu-white hidden-md hidden-lg" data-toggle="cm-menu"></div>
                 <div class="cm-flex">
-                    <h1>我的</h1> 
+                    <h1>首页</h1> 
                     <form id="cm-search" action="search.html" method="get">
-                        <input type="search" name="q" autocomplete="off" placeholder="Search...">
+                        <input type="search" name="q" autocomplete="off" placeholder="找些帖子...">
                     </form>
                 </div>
                 <div class="pull-right">
                     <div id="cm-search-btn" class="btn btn-primary md-search-white" data-toggle="cm-search"></div>
                 </div>
                 <div class="dropdown pull-right">
-                    <button class="btn btn-primary md-notifications-white" data-toggle="dropdown"> <span class="label label-danger">23</span> </button>
+                    <button class="btn btn-primary md-notifications-white" data-toggle="dropdown"> <span class="label label-danger">5</span> </button>
                     <div class="popover cm-popover bottom">
                         <div class="arrow"></div>
                         <div class="popover-content">
@@ -67,69 +67,61 @@
                                     </h4>
                                     <p class="list-group-item-text">Best check yo self, you're not looking too good.</p>
                                 </a>
+                                <a href="#" class="list-group-item">
+                                    <h4 class="list-group-item-heading">
+                                        <i class="fa fa-fw fa-envelope"></i> Aliquam orci lectus
+                                    </h4>
+                                    <p class="list-group-item-text">Donec quis arcu non risus sagittis</p>
+                                </a>
+
                             </div>
-                            <div style="padding:10px"><a class="btn btn-success btn-block" href="#">Show me more...</a></div>
+                            <div style="padding:10px"><a class="btn btn-success btn-block" href="#">全部已读</a></div>
                         </div>
                     </div>
                 </div>
-            </nav>
 
-            <!-- toggle -->
-            <!-- <nav class="cm-navbar cm-navbar-default cm-navbar-slideup">
-                    <div class="cm-flex">
-                        <div class="nav-tabs-container">
-                            <ul class="nav nav-tabs">
-                                <li class="active"><a href="#lorem" data-toggle="tab">Pellentesque</a></li>
-                                <li><a href="#ipsum" data-toggle="tab">habitant morbi</a></li>
-                                <li><a href="#dolor" data-toggle="tab">malesuada</a></li>
-                            </ul>
-                        </div>
-                    </div>
-                </nav> -->
+                <div class="dropdown pull-right">
+                    <button class="btn btn-primary md-account-circle-white" data-toggle="dropdown"></button>
+                    <ul class="dropdown-menu">
+                        <li id="userinfo" class="disabled text-center">
+                            <a style="cursor:default;"><strong></strong></a>
+                        </li>
+                        <li class="divider"></li>
+                        <li>
+                            <a href="profile.html"><i class="fa fa-fw fa-user"></i> 个人信息</a>
+                        </li>
+                        <li>
+                            <a href="setting.html"><i class="fa fa-fw fa-cog"></i> 编辑信息</a>
+                        </li>
+                        <li>
+                            <a href="login.html"><i class="fa fa-fw fa-sign-out"></i> 退出登录</a>
+                        </li>
+                    </ul>
+                </div>
+            </nav>
     
         </header>
         <div id="global">
-            <div class="container-fluid cm-container-white">
-              <div class="media">
-                <div class="media-left">
-                  <img src="./testIcon.jpg" class="media-object" style="width:60px">
-                </div>
-                <div class="media-body">
-                  <h4 class="media-heading">UserNameHere</h4>
-                  <p>UserMotorHere</p>
+            <div class="container-fluid cm-container-black">
+              <div class="panel panel-primary">
+                <div class="panel-body">
+                  <h3>板块名</h3>
+                  <h5>这里放入一些描述</h5>
+                  <h6>版主：admin</h6>
                 </div>
               </div>
-                <ul id="myTab" class="nav nav-tabs" role="tablist">
-                    <li role="presentation" class="active"><a href="#recv-reply" id="recv-reply-tab" role="tab" data-toggle="tab" aria-controls="home" aria-expanded="true">我收到的回复</a></li>
-                    <li role="presentation" class=""><a href="#my-publish" role="tab" id="my-publish-tab" data-toggle="tab" aria-controls="profile" aria-expanded="false">我的发布</a></li>
-                    <li role="presentation" class=""><a href="#my-star" role="tab" id="my-star-tab" data-toggle="tab" aria-controls="profile" aria-expanded="false">我的收藏</a></li>
-                </ul>
-                <div id="myTabContent" class="tab-content">
-                    <div role="tabpanel" class="tab-pane fade active in" id="recv-reply" aria-labelledby="recv-reply-tab">
-                        <div class="container-fluid cm-container-white">
-                          <div class="panel panel-default">
-                            <div class="panel-heading">此处是帖子主题</div>
-                            <div class="panel-body">此处是回复内容</div>
-                          </div>
-                        </div>
-                    </div>
-                    <div role="tabpanel" class="tab-pane fade" id="my-publish" aria-labelledby="my-publish-tab">
-                      <div class="container-fluid cm-container-white">
-                        <div class="panel panel-default">
-                          <div class="panel-heading">此处是帖子主题</div>
-                          <div class="panel-body">此处是发布内容</div>
-                        </div>
-                      </div>
-                    </div>
-                    <div role="tabpanel" class="tab-pane fade" id="my-star" aria-labelledby="my-star-tab">
-                      <div class="container-fluid cm-container-white">
-                        <div class="panel panel-default">
-                          <div class="panel-heading">此处是帖子主题</div>
-                          <div class="panel-body">此处是帖子内容</div>
-                        </div>
-                      </div>
-                    </div>
-                </div>
+              <div class="panel">
+                <div class="panel-head">帖子名+margin?</div>
+                <div class="panel-body">内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容.slice(50)?</div>
+              </div>
+              <div class="panel">
+                  <div class="panel-head">帖子名</div>
+                  <div class="panel-body">内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容</div>
+              </div>
+              <div class="panel">
+                <div class="panel-head">帖子名</div>
+                <div class="panel-body">内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容</div>
+              </div>
             </div>
             <div class="container-fluid">
                 <div id="PostBasicContents" class="row cm-fix-height">
