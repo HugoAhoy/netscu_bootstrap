@@ -26,6 +26,8 @@ $("#loginbtn").click(function(){
             console.log("data= ",data, "status=", status);
             console.log("token",data.token);
             localStorage.setItem("token", data.token);
+            localStorage.setItem("username",username);
+            localStorage.setItem("page","1");
             var token = window.localStorage.getItem("token");
             console.log("token",token);
             self.location.href="home.html"
