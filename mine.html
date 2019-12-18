@@ -8,6 +8,7 @@
         <link rel="stylesheet" type="text/css" href="assets/css/material-design.css">
         <link rel="stylesheet" type="text/css" href="assets/css/small-n-flat.css">
         <link rel="stylesheet" type="text/css" href="assets/css/font-awesome.min.css">
+        <link rel="stylesheet" type="text/css" href="assets/css/netscu.css">
         <title>NETSCU</title>
     </head>
     <body class="cm-no-transition cm-1-navbar">
@@ -89,7 +90,7 @@
     
         </header>
         <div id="global">
-            <div class="container-fluid cm-container-white">
+            <div class="container-fluid cm-container-white" >
               <div class="media">
                 <div class="media-left">
                   <img src="./testIcon.jpg" class="media-object" style="width:60px">
@@ -100,34 +101,54 @@
                 </div>
               </div>
                 <ul id="myTab" class="nav nav-tabs" role="tablist">
-                    <li role="presentation" class="active"><a href="#recv-reply" id="recv-reply-tab" role="tab" data-toggle="tab" aria-controls="home" aria-expanded="true">我收到的回复</a></li>
-                    <li role="presentation" class=""><a href="#my-publish" role="tab" id="my-publish-tab" data-toggle="tab" aria-controls="profile" aria-expanded="false">我的发布</a></li>
-                    <li role="presentation" class=""><a href="#my-star" role="tab" id="my-star-tab" data-toggle="tab" aria-controls="profile" aria-expanded="false">我的收藏</a></li>
+                    <li role="presentation" class="active"><a href="#my-timeline" id="my-timeline-tab" role="tab" data-toggle="tab" aria-controls="home" aria-expanded="true">动态</a></li>
+                    <li role="presentation" class=""><a href="#my-publish" role="tab" id="my-publish-tab" data-toggle="tab" aria-controls="profile" aria-expanded="false">发布</a></li>
+                    <li role="presentation" class=""><a href="#my-star" role="tab" id="my-star-tab" data-toggle="tab" aria-controls="profile" aria-expanded="false">收藏</a></li>
                 </ul>
                 <div id="myTabContent" class="tab-content">
-                    <div role="tabpanel" class="tab-pane fade active in" id="recv-reply" aria-labelledby="recv-reply-tab">
-                        <div class="container-fluid cm-container-white">
-                          <div class="panel panel-default">
-                            <div class="panel-heading">此处是帖子主题</div>
-                            <div class="panel-body">此处是回复内容</div>
-                          </div>
+                    <div role="tabpanel" class="tab-pane fade active in" id="my-timeline" aria-labelledby="my-timeline-tab">
+                        <div class="timeline-header">
+                            <img class="timeline-avatar" src="./testIcon.jpg"/>
+                            <div class="timeline-username">大表哥</div>
+                            <div>2天前</div>
+                            <div style="margin-left: 5px">点赞了</div>
+                        </div>
+                        <div class="post-card">
+                            <div class="post-title">此处是帖子主题</div>
+                            <div class="post-content">此处是发布内容</div>
+                            <div class="content-item">
+                                    <div class="content-item-action">点赞</div>
+                                    <div class="content-item-action">评论</div>
+                            </div>
                         </div>
                     </div>
                     <div role="tabpanel" class="tab-pane fade" id="my-publish" aria-labelledby="my-publish-tab">
-                      <div class="container-fluid cm-container-white">
-                        <div class="panel panel-default">
-                          <div class="panel-heading">此处是帖子主题</div>
-                          <div class="panel-body">此处是发布内容</div>
+                        <div class="post-card">
+                          <div class="post-title">此处是帖子主题</div>
+                          <div class="post-content">此处是发布内容</div>
+                          <div class="content-item">
+                                <div class="content-item-action">点赞</div>
+                                <div class="content-item-action">评论</div>
+                          </div>
                         </div>
-                      </div>
+                        <div class="post-card">
+                            <div class="post-title">此处是帖子主题</div>
+                            <div class="post-content">此处是发布内容</div>
+                            <div class="content-item">
+                                    <div class="content-item-action">点赞</div>
+                                    <div class="content-item-action">评论</div>
+                            </div>
+                        </div>
                     </div>
                     <div role="tabpanel" class="tab-pane fade" id="my-star" aria-labelledby="my-star-tab">
-                      <div class="container-fluid cm-container-white">
-                        <div class="panel panel-default">
-                          <div class="panel-heading">此处是帖子主题</div>
-                          <div class="panel-body">此处是帖子内容</div>
+                        <div class="post-card">
+                            <div class="post-title">此处是帖子主题</div>
+                            <div class="post-content">此处是发布内容</div>
+                            <div class="content-item">
+                                    <div class="content-item-action">点赞</div>
+                                    <div class="content-item-action">评论</div>
+                            </div>
                         </div>
-                      </div>
                     </div>
                 </div>
             </div>

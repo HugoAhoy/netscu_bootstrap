@@ -1,0 +1,58 @@
+.post-card{
+    padding: 20px;
+    margin-bottom: 10px;
+    background: #FFF;
+    box-shadow: 0 1px 3px rgba(26,26,26,.1);
+    display: block;
+    font-family: -apple-system,BlinkMacSystemFont,Helvetica Neue,PingFang SC,Microsoft YaHei,Source Han Sans SC,Noto Sans CJK SC,WenQuanYi Micro Hei,sans-serif;
+}
+.post-title{
+    color: #1a1a1a;
+    font-size: 18px;
+    font-weight: 600;
+    margin-top: -4px;
+    margin-bottom: -4px;
+}
+.post-content{
+    margin-top: 9px;
+    margin-bottom: 2px;
+    font-size: 15px;
+    max-height: 55px;
+    overflow: hidden;
+    color: #1a1a1a;
+}
+.content-item{
+    align-items: center;
+    color: #646464;
+    display: flex;
+    padding: 10px 16px;
+    margin:0 -16px -10px;
+    background: #fff; 
+}
+.content-item-button{
+    color:#76839b;
+    padding-left:12px;
+    font-size: 12px;
+}
+.timeline-header{
+    display: flex;
+    align-items: center;
+    color: #6a737d;
+}
+.timeline-username{
+    color: #24292e;
+    font-size: 16px;
+    font-weight: 600;
+    padding-left: 5px;
+    padding-right: 5px;
+}
+
+.timeline-avatar{
+    width: 40px;
+    height: 40px;
+    display: inline-block;
+    overflow: hidden;
+    line-height: 1;
+    vertical-align: middle;
+    border-radius: 3px;
+}
