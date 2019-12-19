@@ -33,9 +33,10 @@
     color: #1a1a1a;
 }
 .content-item{
-    align-items: center;
+    /* align-items: center; */
     color: #646464;
-    display: flex;
+    /* display: flex; */
+    display: block;
     padding: 10px 16px;
     margin:0 -16px -10px;
     background: #fff; 
