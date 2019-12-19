@@ -32,12 +32,26 @@ gotoDetail=function(id){
     self.location.href="PostDetail.html?postid="+id;
 }
 
+transNum = function(num){
+    if(eval(num) < 999){
+        return num;
+    }
+    else{
+        if(eval(num)/1000 < 10){
+            return eval(num)/1000+"k";
+        }
+        else{
+            return "10k+";
+        }
+    }
+}
+
 renderPostBasic = function(data, Finish){
     let content = $("#PostBasicContents").html();
     // console.log(content);
     // console.log("here1");
     for(var i = 0; i < data.length; i++){
-        content +="<div class=\"col-sm-4\">";
+        content +="<div class=\"col-sm-4\" onclick=\"gotoDetail("+data[i].id+")\" >";
         content +="    <div class=\"panel panel-default\">";
         content +="        <div class=\"panel-heading\">";
         content +=data[i].title;
@@ -48,16 +62,17 @@ renderPostBasic = function(data, Finish){
         content +="        <div class=\"panel-footer\">";
         content +="            <div class=\"row\">";
         content +="                <div class=\"col-xs-2 col-sm-2 col-md-2 col-lg-2\">";
-        content +="                    <a href=\"javascript:gotoDetail("+data[i].id+");\">";
-        content +="                        <span class=\"glyphicon glyphicon-align-justify\" style=\"color: rgb(246, 141, 0);\"></span>";
+        content +="                    <a>";
+        content +="                        <span class=\"fa fa-fw fa-align-justify\" style=\"color: rgb(246, 141, 0);\"></span>";
         content += "                   </a>";
         content +="                </div>";
 
-        content +="                <div class=\"col-xs-2 col-xs-offset-5 col-sm-2 col-sm-offset-5 col-md-2 col-md-offset-5 col-lg-2 col-lg-offset-5\">";
+        content +="                <div class=\"col-xs-3 col-xs-offset-4 col-sm-3 col-sm-offset-4 col-md-3 col-md-offset-4 col-lg-3 col-lg-offset-4\">";
         content +="                    <i class=\"fa fa-fw fa-eye\"></i>"+data[i].viewNum;
         content +="                </div>";
 
-        content +="                <div class=\"col-xs-2 col-xs-offset-1 col-sm-2 col-sm-offset-1 col-md-2 col-md-offset-1 col-lg-2 col-lg-offset-1\">";
+        // content +="                <div class=\"col-xs-2 col-xs-offset-1 col-sm-2 col-sm-offset-1 col-md-2 col-md-offset-1 col-lg-2 col-lg-offset-1\">";
+        content +="                <div class=\"col-xs-3 col-sm-3 col-md-3 col-lg-3\">";
         content +="                    <i class=\"fa fa-fw fa-bookmark\"></i>"+data[i].collectionNum;
         content +="                </div>";
 
