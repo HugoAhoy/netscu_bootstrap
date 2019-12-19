@@ -21,6 +21,7 @@ $(function(){
         $("#detailToggle").click();
         getSupport();
         setBasic();
+        getBasicNotifyFromStorage();
     }
 })
 
@@ -342,4 +343,12 @@ collectPost = function(postId){
 
 editPost = function(postId){
     self.location.href="editnotepad.html?postid="+postId;
+}
+
+getBasicNotifyFromStorage =function(){
+    var html = localStorage.getItem("NotifyContent");
+    var Unread = localStorage.getItem("UnreadNotifyNum");
+    console.log(Unread);
+    $("#Unread").html(Unread);
+    $("#notification").html(html);
 }

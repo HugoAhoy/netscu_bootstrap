@@ -27,6 +27,8 @@ $(function(){
         postId = getPostId();
         getDetailInfo();
         setBasic();
+
+        getBasicNotifyFromStorage();
     }
 
     
@@ -128,4 +130,13 @@ setBasic=function(){
     console.log(username);
     console.log(user);
     $("li#userinfo").html(user);
+}
+
+
+getBasicNotifyFromStorage =function(){
+    var html = localStorage.getItem("NotifyContent");
+    var Unread = localStorage.getItem("UnreadNotifyNum");
+    console.log(Unread);
+    $("#Unread").html(Unread);
+    $("#notification").html(html);
 }

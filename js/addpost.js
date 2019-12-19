@@ -4,6 +4,7 @@ var url;
 $(function(){
 
     url = localStorage.getItem("url");
+    getBasicNotifyFromStorage();
 
     $('#summernote').summernote({
 	height: ($(window).height() - 500),
@@ -16,7 +17,7 @@ $(function(){
             ['view', ['fullscreen']]
         ]
 
-    });
+    });    
     
 });
 
@@ -63,4 +64,12 @@ submitPost=function (){
         }
     }); 
 
+}
+
+getBasicNotifyFromStorage =function(){
+    var html = localStorage.getItem("NotifyContent");
+    var Unread = localStorage.getItem("UnreadNotifyNum");
+    console.log(Unread);
+    $("#Unread").html(Unread);
+    $("#notification").html(html);
 }
