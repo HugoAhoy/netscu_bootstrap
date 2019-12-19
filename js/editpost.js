@@ -1,5 +1,6 @@
 var postId;
-var url = "http://localhost:8080";
+var url;
+// var url = "http://localhost:8080";
 
 $(function(){
     var token = localStorage.getItem("token");
@@ -10,6 +11,7 @@ $(function(){
         alert("请先登录！");
     }
     else{
+        url = localStorage.getItem("url");
         $('#summernote').summernote({
             height: ($(window).height() - 500),
             toolbar: [
@@ -110,6 +112,12 @@ submitPost=function (){
         success:function(data, status){ 
             console.log("data= ",data, "status=", status);
             localStorage.setItem("token", thistoken);
+            if(data.success === true){
+                self.location.href="PostDetail.html?postid="+data.id;
+            }
+            else{
+                alert("发布帖子失败");
+            }
         }
     });
 }

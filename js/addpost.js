@@ -1,6 +1,9 @@
-var url = "http://localhost:8080";
+// var url = "http://localhost:8080";
+var url;
 
 $(function(){
+
+    url = localStorage.getItem("url");
 
     $('#summernote').summernote({
 	height: ($(window).height() - 500),

@@ -1,4 +1,5 @@
-var url = "http://localhost:8080";
+var url;
+// var url = "http://localhost:8080";
 // var tokentouse;
 $(function()
 {
@@ -10,8 +11,11 @@ $(function()
         alert("请先登录！");
     }
     else{
+        url = localStorage.getItem("url");
+        // alert(url);
         getBasicInfo();
         setBasic();
+        getBasicNotify();
     }
 });
 $(window).scroll(function () {
@@ -96,7 +100,7 @@ renderPostBasic = function(data, Finish){
 }
 
 getBasicInfo = function(){
-    console.log("exe");
+    // console.log("exe");
     var numPerPage = 9;
     var page = localStorage.getItem("page");
     // var page = $("#currentPage").val();
@@ -145,4 +149,41 @@ setBasic=function(){
     console.log(username);
     console.log(user);
     $("li#userinfo").html(user);
+}
+
+getBasicNotify = function(){
+    // var page = $("#currentPage").val();
+    // 获取信息
+    var thistoken = localStorage.getItem("token");
+    // tokentouse = thistoken;
+    // console.log("token",tokentouse);
+    $.ajax({
+        type:"GET", 
+        url:url+"/Notify/1/5",
+        dataType:"json",  // 预期服务器返回的数据类型。如果不指定，jQuery 将自动根据 HTTP 包 MIME 信息来智能判断，比如XML MIME类型就被识别为XML。
+        headers:{
+            'token':thistoken
+        },
+        success:function(data, status){ 
+            console.log("data= ",data, "status=", status);
+            renderBasicNotify(data);
+        }
+    });
+}
+
+renderBasicNotify = function(Data){
+    $("#UnreadNum").html(Data.Unread);
+    var data = Data.data;
+    var html = "";
+    for(var i = 0; i < data.length; i++){
+        html +="<a href=\"#\" class=\"list-group-item\">";
+        html +="<h4 class=\"list-group-item-heading text-overflow\">";
+        html +="    <i class=\"fa fa-fw fa-envelope\"></i>"+data[i].name+data[i].type+"了你的帖子";
+        html +="</h4>";
+        html +="<p class=\"list-group-item-text text-overflow\">"+data[i].title+"</p>"
+        html +="</a>";
+    }
+    $("#notification").html(html);
+    localStorage.setItem("NotifyContent",html);
+    localStorage.setItem("UnreadNotifyNum",Data.Unread);
 }
