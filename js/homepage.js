@@ -1,4 +1,5 @@
-var url = "http://localhost:8080";
+var url;
+// var url = "http://localhost:8080";
 // var tokentouse;
 $(function()
 {
@@ -10,6 +11,8 @@ $(function()
         alert("请先登录！");
     }
     else{
+        url = localStorage.getItem("url");
+        // alert(url);
         getBasicInfo();
         setBasic();
     }

@@ -1,5 +1,6 @@
 var postId;
-var url = "http://localhost:8080";
+var url;
+// var url = "http://localhost:8080";
 // var page = 1;
 
 $(function(){
@@ -11,6 +12,8 @@ $(function(){
         alert("请先登录！");
     }
     else{
+        url = localStorage.getItem("url");
+        // alert(url);
         postId = getPostId();
         localStorage.setItem("supportPage","1");
         console.log(postId);

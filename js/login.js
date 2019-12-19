@@ -1,9 +1,14 @@
 $(function () {
+    window.localStorage.removeItem("url");
+    window.localStorage.setItem("url", "http://"+window.location.host.split(":")[0]+":8080");
     window.localStorage.removeItem("token");
+    // alert(localStorage.getItem("url"));
 });
 
 $("#loginbtn").click(function(){
-    var url = "http://localhost:8080";
+    var url = localStorage.getItem("url");
+    console.log()
+    // var url = "http://localhost:8080";
     var username = $("#Username").val();
     var password = $("#Password").val();
     console.log(username+password);
