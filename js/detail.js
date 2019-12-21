@@ -153,6 +153,7 @@ getDetailInfo = function(){
 
 }
 
+
 getSupport=function(){
     var thistoken = localStorage.getItem("token");
     var numPerPage = 9;
@@ -272,7 +273,7 @@ likePost = function(postId){
                 if(data.success === true){
                     $("#likes"+postId+" a span").attr("class","fa fa-fw fa-heart-o");
                     var likeNum = $("#likes"+postId+" a span").html();
-                    $("#likes"+postId+" a span").html(eval(likeNum)-1);d
+                    $("#likes"+postId+" a span").html(eval(likeNum)-1);
                 }
                 else{
                     alert("操作失败");
