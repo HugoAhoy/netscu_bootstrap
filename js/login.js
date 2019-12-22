@@ -30,6 +30,7 @@ $("#loginbtn").click(function(){
         success:function(data, status){ 
             console.log("data= ",data, "status=", status);
             console.log("token",data.token);
+            // alert(data.token);
             localStorage.setItem("token", data.token);
             localStorage.setItem("username",username);
             localStorage.setItem("page","1");
