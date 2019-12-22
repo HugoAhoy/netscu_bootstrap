@@ -37,7 +37,7 @@
             <nav class="cm-navbar cm-navbar-primary">
                 <div class="btn btn-primary md-menu-white hidden-md hidden-lg" data-toggle="cm-menu"></div>
                 <div class="cm-flex">
-                    <h1>消息</h1> 
+                    <h1>用户列表</h1> 
                     <form id="cm-search" action="search.html" method="get">
                         <input type="search" name="q" autocomplete="off" placeholder="找些帖子...">
                     </form>
@@ -119,37 +119,38 @@
         </header>
         <div id="global">
             <div class="my-container">
-                <div style="box-shadow: 2px 2px 2px 1px rgba(0, 0, 0, 0.2); background-color: #fff; display: flex; flex-direction: row; justify-content: space-between; align-items: center;">
-                    <div style="font-size: 18px;  padding:10px 20px 10px 20px;color:#1a1a1a" >消息列表</div>
-                    <div class="btn btn-warning" style="margin: 10px 20px 10px 20px;">全部已读</div>
-                </div>
-               <div class="message-card">
-                   <div class="message-left">
-                       <img class="message-avatar" src="./testIcon.jpg"/>
-                   </div>
-                        <div class="message-right" style="display:flex; flex-direction:column;">
-                        <div style="display: flex; align-items: center; color: #6a737d; background-color: #FFF;">
-                            <div class="timeline-username">大表哥</div>
-                            <div style="margin-left: 5px">点赞了你的帖子</div>
+                <div style="border-bottom: 1px solid #eee; display: flex; align-items: center; justify-content: space-between; background-color: #fff;">
+                    <div class="user-info-card">
+                        <div class="media-left">
+                            <img src="./testIcon.jpg" class="media-object" style="width:60px;height: 60px; border-radius: 30px;">
                         </div>
-                        <div style="color:#333; margin-left:5px;">此处是帖子主题</div>
-                        <div style="color: #6a737d; margin-left:5px;">2天前</div>
-                   </div>
-               </div>
-               <div class="message-card">
-                    <div class="message-left">
-                        <img class="message-avatar" src="./testIcon.jpg"/>
+                        <div id="UserInfo" class="media-body" >
+                            <h4 style="margin-top: 5px; margin-bottom: 5px;">UserNameHere</h4>
+                            <p>UserMotorHere</p>
+                        </div>
                     </div>
-                    <div class="message-right" style="display:flex; flex-direction:column;">
-                        <div style="display: flex; align-items: center; color: #6a737d; background-color: #FFF;">
-                            <div class="timeline-username">大表哥</div>
-                            <div style="margin-left: 5px">点赞了你的帖子</div>
-                        </div>
-                        <div style="color:#333; margin-left:5px;">此处是帖子主题</div>
-                        <div style="color: #6a737d; margin-left:5px;">2天前</div>
+                    <div>
+                        <div class="btn btn-primary" style="margin-right:35px; border-radius: 15px;">关注</div>
+                        <!-- <div class="btn btn-default" style="background:#eee; margin-right:35px;  border-radius: 15px;">已关注</div>
+                        <div class="btn btn-default" style="background:#eee; margin-right:35px  border-radius: 15px;">互相关注</div> -->
                     </div>
                 </div>
-            </div>
+                <div style="border-bottom: 1px solid #eee; display: flex; align-items: center; justify-content: space-between; background-color: #fff;">
+                    <div class="user-info-card">
+                        <div class="media-left">
+                            <img src="./testIcon.jpg" class="media-object" style="width:60px; height: 60px; border-radius: 30px;">
+                        </div>
+                        <div id="UserInfo" class="media-body" >
+                            <h4 style="margin-top: 5px; margin-bottom: 5px;">UserNameHere</h4>
+                            <p>UserMotorHere</p>
+                        </div>
+                    </div>
+                    <div>
+                        <div class="btn btn-primary" style="margin-right:35px; border-radius: 15px;">关注</div>
+                        <!-- <div class="btn btn-default" style="background:#eee; margin-right:35px;  border-radius: 15px;">已关注</div>
+                        <div class="btn btn-default" style="background:#eee; margin-right:35px  border-radius: 15px;">互相关注</div> -->
+                    </div>
+                </div>                
             </div>
             <div class="container-fluid">
                 <div id="PostBasicContents" class="row cm-fix-height">
