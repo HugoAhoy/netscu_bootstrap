@@ -9,6 +9,7 @@
         <link rel="stylesheet" type="text/css" href="assets/css/small-n-flat.css">
         <link rel="stylesheet" type="text/css" href="assets/css/font-awesome.min.css">
         <link rel="stylesheet" type="text/css" href="assets/css/netscu.css">
+        <link rel="stylesheet" type="text/css" href="assets/css/animate.css">
         <title>Clearmin template</title>
     </head>
     <body class="cm-no-transition cm-2-navbar">
@@ -97,9 +98,6 @@
                 <div class="cm-flex">
                     <div class="nav-tabs-container">
                         <ul class="nav nav-tabs">
-                            <li><a href="#Detail" data-toggle="tab"><span id="detailToggle">主帖内容</span></a></li>
-                            <li><a href="#Support" data-toggle="tab"><span id="supportToggle">回帖</span></a></li>
-                            <!-- <li><a href="#Comment" data-toggle="tab"><span id="commentToggle">评论区</span></a></li> -->
                         </ul>
                     </div>
                 </div>
@@ -107,85 +105,38 @@
         </header>
         <div id="global">
             <div class="container-fluid">
-                <div class="tab-content">
+                <div class="row">
+                    <button type="button" class="btn btn-primary  test-btn" id="testbtn" onclick="modalShow('#bigModal', '');">
+                        模态框测试
+                    </button>
+    
+                </div>
+        </div>
 
-                    <div class="tab-pane fade in active" id="Detail" style="margin-top:20px">
+
+        <div class="modal bs-example-modal-lg" onclick="modalHide('#bigModal', '');" id="bigModal">
+            <div class="modal-dialog modal-lg">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <button type="button" onclick="modalHide('#bigModal', '');" class="close"
+                        data-dismiss="modal">
+                            <span aria-hidden="true">
+                                ×
+                            </span>
+                            <span class="sr-only">
+                                Close
+                            </span>
+                        </button>
+                        <h4 class="modal-title">
+                            模态框标题
+                        </h4>
                     </div>
-
-                    <div class="tab-pane fade in active" id="Support" style="margin-top:20px">
+                    <div class="modal-body">
                     </div>
-
-                    <!-- <div class="tab-pane fade in active" id="Comment" style="margin-top:20px">
-                    </div> -->
-
                 </div>
             </div>
-
-            <!-- Modal Begin -->
-            <div id="myModal" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
-                <div class="modal-dialog">
-                    <div class="modal-content">
-                        <div class="modal-header">
-                            <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">×</span></button>
-                            <h4 class="modal-title" id="myModalLabel">
-                                回复主帖
-                                <a class="anchorjs-link" href="#myModalLabel"><span class="anchorjs-icon"></span></a>
-                            </h4>
-                        </div>
-                        <div class="modal-body">
-                            <!-- <h5 id="text-in-a-modal">
-                                回复内容
-                                <a class="anchorjs-link" href="#text-in-a-modal"><span class="anchorjs-icon"></span></a>
-                            </h5> -->
-                            <textarea autofocus id="supportContent" class="form-control" id="deblock_udid" name="deblock_udid" rows="16" placeholder="说出你对主贴的看法吧..."></textarea>
-                        </div>
-
-                        <div class="modal-footer">
-                            <button id="supportCancel" type="button" class="btn btn-default" data-dismiss="modal">取消</button>
-                            <button onclick="addSupport()" type="button" class="btn btn-primary">回帖</button>
-                        </div>
-                    </div>
-                    <!-- /.modal-content -->
-                </div>
-                <!-- /.modal-dialog -->
-            </div>
-            <!-- Modal End -->
-
-            <!-- testmodal -->
-            <div id="allComment" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="allCommentLabel" aria-hidden="true" style="bottom: 50px;">
-                <div class="modal-dialog">
-                    <div class="modal-content">
-                        <div class="modal-header">
-                            <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">×</span></button>
-                            <h5 class="modal-title" id="myModalLabel">
-                                全部评论
-                                <!-- <a class="anchorjs-link" href="#myModalLabel"><span class="anchorjs-icon"></span></a> -->
-                            </h5>
-                        </div>
-                        <div id="allCommentBody" class="modal-body" style="overflow-y: scroll;max-height:400px">
-                            <!-- <h5 id="text-in-a-modal">
-                                回复内容
-                                <a class="anchorjs-link" href="#text-in-a-modal"><span class="anchorjs-icon"></span></a>
-                            </h5> -->
-                            <!-- <textarea autofocus id="supportContent" class="form-control" id="deblock_udid" name="deblock_udid" rows="16" placeholder="说出你对主贴的看法吧..."></textarea> -->
-                        </div>
-
-                        <div class="modal-footer">
-                            <textarea autofocus id="commentContent" class="form-control" id="deblock_udid" name="deblock_udid" rows="1" placeholder="评论几句..."></textarea>
-
-                            <button id="commentCancel" type="button" class="btn btn-default" data-dismiss="modal">取消</button>
-                            <button onclick="addCommentModal()" type="button" class="btn btn-primary">评论</button>
-                        </div>
-                    </div>
-                    <!-- /.modal-content -->
-                </div>
-                <!-- /.modal-dialog -->
-            </div>
-            <!-- testModal End -->
-
-
-
-
+        </div>
+            
 
             <footer class="cm-footer"><span class="pull-left">Made By HugoAhoy</span><span class="pull-right">&copy; Copyright</span></footer>
         </div>
@@ -195,7 +146,6 @@
         <script src="assets/js/fastclick.min.js"></script>
         <script src="assets/js/bootstrap.min.js"></script>
         <script src="assets/js/clearmin.min.js"></script>
-        <script src="js/detail.js"></script>
-        <!-- <script src="js/showAllComment.js"></script> -->
+        <script src="js/animatetest.js"></script>
     </body>
 </html>
