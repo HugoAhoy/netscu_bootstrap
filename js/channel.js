@@ -27,3 +27,9 @@ getBasicNotifyFromStorage =function(){
     $("#notification").html(html);
 
 }
+
+gotoChannel=function(id){
+    localStorage.setItem("channelId", id);
+    localStorage.setItem("channelPage","1");
+    self.location.href="channelDetail.html";
+}

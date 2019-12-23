@@ -1,4 +1,5 @@
 var url;
+var channelId;
 // var url = "http://localhost:8080";
 // var tokentouse;
 $(function()
@@ -12,7 +13,9 @@ $(function()
     }
     else{
         url = localStorage.getItem("url");
+        channelId = localStorage.getItem("channelId");
         // alert(url);
+        getChannelInfo();
         getBasicInfo();
         setBasic();
         getBasicNotify();
@@ -87,7 +90,7 @@ renderPostBasic = function(data, Finish){
         content +="</div>";
     }
     content +="<ul class=\"pager\">";
-    var currenPage = localStorage.getItem("page");
+    var currenPage = localStorage.getItem("channelPage");
     if(currenPage !== "1"){
         content +="<li><a href=\"javascript:changePage(-1);\">&laquo;</a></li>";
     }
@@ -102,7 +105,7 @@ renderPostBasic = function(data, Finish){
 getBasicInfo = function(){
     // console.log("exe");
     var numPerPage = 9;
-    var page = localStorage.getItem("page");
+    var channelPage = localStorage.getItem("channelPage");
     // var page = $("#currentPage").val();
     // 获取信息
     var thistoken = localStorage.getItem("token");
@@ -110,7 +113,7 @@ getBasicInfo = function(){
     // console.log("token",tokentouse);
     $.ajax({ 
         type:"GET", 
-        url:url+"/Post/BasicInfo/"+page+"/"+numPerPage,
+        url:url+"/Post/BasicInfoByChannel/"+channelPage+"/"+numPerPage+"/"+channelId,
         dataType:"json",  // 预期服务器返回的数据类型。如果不指定，jQuery 将自动根据 HTTP 包 MIME 信息来智能判断，比如XML MIME类型就被识别为XML。
         headers:{
             'token':thistoken
@@ -126,21 +129,20 @@ getBasicInfo = function(){
             // self.location.href="home.html"
         }
     });
-    $("#currentPage").val(eval(page)+1);    
 }
 
 changePage=function(direction){
     if(direction === -1){
-        var page = localStorage.getItem("page");
+        var page = localStorage.getItem("channelPage");
         page = eval(page) - 1;
-        localStorage.setItem("page", page);
+        localStorage.setItem("channelPage", page);
     }
     else{
-        var page = localStorage.getItem("page");
+        var page = localStorage.getItem("channelPage");
         page = eval(page) + 1;
-        localStorage.setItem("page", page);
+        localStorage.setItem("channelPage", page);
     }
-    self.location.href="home.html";
+    self.location.href="channelDetail.html";
 }
 
 setBasic=function(){
@@ -186,4 +188,29 @@ renderBasicNotify = function(Data){
     $("#notification").html(html);
     localStorage.setItem("NotifyContent",html);
     localStorage.setItem("UnreadNotifyNum",Data.Unread);
+}
+
+getChannelInfo = function(){
+    var thistoken = localStorage.getItem("token");
+
+    $.ajax({
+        type:"GET", 
+        url:url+"/Cate/Info/"+channelId,
+        dataType:"json",  // 预期服务器返回的数据类型。如果不指定，jQuery 将自动根据 HTTP 包 MIME 信息来智能判断，比如XML MIME类型就被识别为XML。
+        headers:{
+            'token':thistoken
+        },
+        success:function(data, status){ 
+            console.log("data= ",data, "status=", status);
+            renderCate(data);
+        }
+    });
+}
+
+renderCate = function(data){
+    var html = "";
+    html +="<h3>"+data.name+"</h3>";
+    html +="<hr>";
+    html +="<h4>"+data.description+"</h4>";
+    $("#ChannelInfo").html(html);
 }
