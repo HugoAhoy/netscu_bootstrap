@@ -1,4 +1,5 @@
 var url;
+var uid;
 // var url = "http://localhost:8080";
 // var tokentouse;
 $(function()
@@ -11,6 +12,7 @@ $(function()
         alert("请先登录！");
     }
     else{
+        uid = getUid();
         localStorage.setItem("timelinePage", "1");
         localStorage.setItem("postPage", "1");
         localStorage.setItem("collectionPage", "1");
@@ -24,6 +26,31 @@ $(function()
         setBasic();
     }
 });
+
+
+getQueryVariable=function(variable){
+    var query = window.location.search.substring(1);
+    var vars = query.split("&");
+    console.log(vars);
+    for (var i = 0; i < vars.length; i++) {
+            var pair = vars[i].split("=");
+            console.log(pair[0]," ", pair[1]);
+            if(pair[0] === variable){
+                return pair[1];
+            }
+    }
+    return(false);
+}
+
+getUid = function(){
+    let temp = getQueryVariable("uid");
+    if(temp === false){
+        return "";
+    }
+    else{
+        return temp;
+    }
+}
 
 setBasic=function(){
     var username = localStorage.getItem("username");
@@ -49,7 +76,7 @@ getOperation = function(){
     var numPerPage = 9;
     $.ajax({
         type:"GET",
-        url:url+"/Operation/"+timelinePage+"/"+numPerPage,
+        url:url+"/Operation/"+timelinePage+"/"+numPerPage+"/"+uid,
         dataType:"json",  // 预期服务器返回的数据类型。如果不指定，jQuery 将自动根据 HTTP 包 MIME 信息来智能判断，比如XML MIME类型就被识别为XML。
         headers:{
             'token':thistoken
@@ -69,7 +96,7 @@ getPost=function(){
     var numPerPage = 9;
     $.ajax({
         type:"GET",
-        url:url+"/Post/UserPost/"+postPage+"/"+numPerPage,
+        url:url+"/Post/UserPost/"+postPage+"/"+numPerPage+"/"+uid,
         dataType:"json",  // 预期服务器返回的数据类型。如果不指定，jQuery 将自动根据 HTTP 包 MIME 信息来智能判断，比如XML MIME类型就被识别为XML。
         headers:{
             'token':thistoken
@@ -103,11 +130,9 @@ getCollection = function(){
 
 getUserInfo = function(){
     var thistoken = localStorage.getItem("token");
-    var collectionPage = localStorage.getItem("collectionPage");
-    var numPerPage = 9;
     $.ajax({
         type:"GET",
-        url:url+"/User/Info",
+        url:url+"/User/Info/"+uid,
         dataType:"json",  // 预期服务器返回的数据类型。如果不指定，jQuery 将自动根据 HTTP 包 MIME 信息来智能判断，比如XML MIME类型就被识别为XML。
         headers:{
             'token':thistoken
@@ -173,7 +198,7 @@ renderOperation=function(Data){
     var html = "";
     var data = Data.data;
     for(var i = 0; i < data.length; i++){
-        html +="<div class=\"timeline-card\" onclick=\"gotoDetail(\""+data[i].id+"\")\">";
+        html +="<div class=\"timeline-card\" onclick=\"gotoDetail("+data[i].id+")\">";
         html +="    <div class=\"timeline-header\">";
         html +="        <img class=\"timeline-avatar\" src=\"./testIcon.jpg\"/>";
         html +="    <div class=\"timeline-username\"></div>";
@@ -211,7 +236,7 @@ renderPost=function(Data){
     var html = "";
     var data = Data.data;
     for(var i = 0; i < data.length; i++){
-        html +="<div class=\"timeline-card\" onclick=\"gotoDetail(\""+data[i].id+"\")\">";
+        html +="<div class=\"timeline-card\" onclick=\"gotoDetail("+data[i].id+")\">";
         html +="    <div class=\"timeline-header\">";
         html +="        <img class=\"timeline-avatar\" src=\"./testIcon.jpg\"/>";
         html +="    <div class=\"timeline-username\">"+data[i].name+"</div>";
@@ -249,7 +274,7 @@ renderCollection=function(Data){
     var html = "";
     var data = Data.data;
     for(var i = 0; i < data.length; i++){
-        html +="<div class=\"timeline-card\" onclick=\"gotoDetail(\""+data[i].id+"\")\">";
+        html +="<div class=\"timeline-card\" onclick=\"gotoDetail("+data[i].id+")\">";
         html +="    <div class=\"timeline-header\">";
         html +="        <img class=\"timeline-avatar\" src=\"./testIcon.jpg\"/>";
         html +="    <div class=\"timeline-username\"></div>";
@@ -286,8 +311,40 @@ renderUserInfo=function(data){
     html += "<h4 class=\"media-heading\">"+data.name+"</h4>"
     html += "<p>"+data.description+"</p>";
     $("#UserInfo").html(html);
+    $("#myFollow").html(data.followNum);
+    $("#FollowMe").html(data.fansNum);
+    if(data.me){
+        $("#followBtnArea").html("");
+    }
+    else{
+        if(data.followed){
+            var html ="<div class=\"btn btn-default\" style=\"background:#eee; margin-right:35px;  border-radius: 15px;\">已关注</div>";
+            $("#followBtnArea").html(html);
+        }
+        else{
+            var html ="<div class=\"btn btn-primary\" style=\"margin-right:35px; border-radius: 15px;\">关注</div>";
+            $("#followBtnArea").html(html);
+        }
+    }
 }
 
 gotoDetail=function(id){
     self.location.href="PostDetail.html?postid="+id;
+}
+
+gotoFollow=function(){
+    var gotoUrl = "followuserList.html";
+    if(uid !== ""){
+        gotoUrl += "?uid="+uid;
+    }
+    self.location.href= gotoUrl;
+}
+
+gotoFan = function(){
+    var gotoUrl = "fanuserList.html";
+    if(uid !== ""){
+        gotoUrl += "?uid="+uid;
+    }
+    self.location.href= gotoUrl;
+
 }
