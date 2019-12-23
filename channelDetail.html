@@ -23,8 +23,9 @@
                     <div id="cm-menu-scroller">
                         <ul class="cm-menu-items">
                             <li class="active"><a href="home.html" class="sf-house">首页</a></li>
-                            <li><a href="notepad.html" class="sf-notepad">发帖</a></li>
                             <li><a href="channel.html" class="sf-brick">板块</a></li>
+                            <li><a href="notepad.html" class="sf-notepad">发帖</a></li>
+                            <li><a href="message.html" class="sf-box-full">消息</a></li>
                             <li><a href="mine.html" class="sf-user-id">我的</a></li>
                         </ul>
                     </div>
@@ -45,12 +46,12 @@
                     <div id="cm-search-btn" class="btn btn-primary md-search-white" data-toggle="cm-search"></div>
                 </div>
                 <div class="dropdown pull-right">
-                    <button class="btn btn-primary md-notifications-white" data-toggle="dropdown"> <span class="label label-danger">5</span> </button>
+                    <button class="btn btn-primary md-notifications-white" data-toggle="dropdown"> <span id="UnreadNum" class="label label-danger"></span> </button>
                     <div class="popover cm-popover bottom">
                         <div class="arrow"></div>
                         <div class="popover-content">
-                            <div class="list-group">
-                                <a href="#" class="list-group-item">
+                            <div id="notification" class="list-group">
+                                <!-- <a href="#" class="list-group-item">
                                     <h4 class="list-group-item-heading text-overflow">
                                         <i class="fa fa-fw fa-envelope"></i> Nunc volutpat aliquet magna.
                                     </h4>
@@ -73,10 +74,10 @@
                                         <i class="fa fa-fw fa-envelope"></i> Aliquam orci lectus
                                     </h4>
                                     <p class="list-group-item-text">Donec quis arcu non risus sagittis</p>
-                                </a>
+                                </a> -->
 
                             </div>
-                            <div style="padding:10px"><a class="btn btn-success btn-block" href="#">全部已读</a></div>
+                            <div style="padding:10px"><a class="btn btn-success btn-block" href="#">查看所有</a></div>
                         </div>
                     </div>
                 </div>
@@ -99,30 +100,32 @@
                         </li>
                     </ul>
                 </div>
+
             </nav>
+
+            <!-- toggle -->
+            <!-- <nav class="cm-navbar cm-navbar-default cm-navbar-slideup">
+                    <div class="cm-flex">
+                        <div class="nav-tabs-container">
+                            <ul class="nav nav-tabs">
+                                <li class="active"><a href="#lorem" data-toggle="tab">Pellentesque</a></li>
+                                <li><a href="#ipsum" data-toggle="tab">habitant morbi</a></li>
+                                <li><a href="#dolor" data-toggle="tab">malesuada</a></li>
+                            </ul>
+                        </div>
+                    </div>
+                </nav> -->
     
         </header>
         <div id="global">
-            <div class="container-fluid cm-container-black">
-              <div class="panel panel-primary">
-                <div class="panel-body">
-                  <h3>板块名</h3>
-                  <h5>这里放入一些描述</h5>
-                  <h6>版主：admin</h6>
-                </div>
-              </div>
-              <div class="panel">
-                <div class="panel-head">帖子名+margin?</div>
-                <div class="panel-body">内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容.slice(50)?</div>
-              </div>
-              <div class="panel">
-                  <div class="panel-head">帖子名</div>
-                  <div class="panel-body">内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容</div>
-              </div>
-              <div class="panel">
-                <div class="panel-head">帖子名</div>
-                <div class="panel-body">内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容</div>
-              </div>
+            <div class="container-fluid cm-container-white">
+                <h3>版块名</h3>
+                <hr>
+                <h4>生活是人类活着的期间所做的一切行为的总称。在本版块，您可以分享在川大生活中的趣事。</h4>
+                <h4>在最广泛的意义上，是任何单一的书面作品。在本版块，您可以分享您的阅读笔记或是给坛友们推荐一本好书</h4>
+                <h4>技术可以指人类对机器、硬体或人造器皿的運用，但它也可以包含更广的架构，如系統、组织方法学和技巧。在本版块，您可以交流您学习技术的心得或是向坛友们推荐一些新技术</h4>
+                <h4>川大校内外有很多比赛需要募集志同道合的队员。在本版块，您可以发布比赛消息吸引川大同学们参与，也可以发布招募队员信息，共同参与比赛或项目。</h4>
+                <!-- <p>Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Vestibulum tortor quam, feugiat vitae, ultricies eget, tempor sit amet, ante. Donec eu libero sit amet quam egestas semper. Aenean ultricies mi vitae est. Mauris placerat eleifend leo. Quisque sit amet est et sapien ullamcorper pharetra. Vestibulum erat wisi, condimentum sed, commodo vitae, ornare sit amet, wisi. Aenean fermentum, elit eget tincidunt condimentum, eros ipsum rutrum orci, sagittis tempus lacus enim ac dui. Donec non enim in turpis pulvinar facilisis. Ut felis.</p> -->
             </div>
             <div class="container-fluid">
                 <div id="PostBasicContents" class="row cm-fix-height">
