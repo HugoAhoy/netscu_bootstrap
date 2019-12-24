@@ -12,8 +12,9 @@ $(function()
     }
     else{
         url = localStorage.getItem("url");
+        localStorage.setItem("searchPage", "1");
         // alert(url);
-        getBasicInfo();
+        getBasicInfoBySearch();
         setBasic();
         getBasicNotify();
     }
@@ -52,7 +53,7 @@ transNum = function(num){
 }
 
 renderPostBasic = function(data, Finish){
-    let content = $("#PostBasicContents").html();
+    let content = "";
     // console.log(content);
     // console.log("here1");
     for(var i = 0; i < data.length; i++){
@@ -87,23 +88,29 @@ renderPostBasic = function(data, Finish){
         content +="    </div>";
         content +="</div>";
     }
-    content +="<ul class=\"pager\">";
-    var currenPage = localStorage.getItem("page");
-    if(currenPage !== "1"){
-        content +="<li><a href=\"javascript:changePage(-1);\">&laquo;</a></li>";
+    if(data.length === 0){
+        content = "<p style=\"text-align:center\">没有搜索到相关的结果</p>";
     }
-    if(Finish !== true){
-        content +="<li><a href=\"javascript:changePage(1);\">&raquo;</a></li>";
+    else{
+        content +="<ul class=\"pager\">";
+        var currenPage = localStorage.getItem("searchPage");
+        if(currenPage !== "1"){
+            content +="<li><a href=\"javascript:changePage(-1);\">&laquo;</a></li>";
+        }
+        if(Finish !== true){
+            content +="<li><a href=\"javascript:changePage(1);\">&raquo;</a></li>";
+        }
+        content +="</ul>";    
     }
-    content +="</ul>";
     // console.log(content);
     $("#PostBasicContents").html(content);
 }
 
-getBasicInfo = function(){
+getBasicInfoBySearch = function(){
+    var Q = getQ();
     // console.log("exe");
     var numPerPage = 9;
-    var page = localStorage.getItem("page");
+    var page = localStorage.getItem("searchPage");
     // var page = $("#currentPage").val();
     // 获取信息
     var thistoken = localStorage.getItem("token");
@@ -111,7 +118,7 @@ getBasicInfo = function(){
     // console.log("token",tokentouse);
     $.ajax({ 
         type:"GET", 
-        url:url+"/Post/BasicInfo/"+page+"/"+numPerPage,
+        url:url+"/Search/BasicInfo/"+Q+"/"+page+"/"+numPerPage,
         dataType:"json",  // 预期服务器返回的数据类型。如果不指定，jQuery 将自动根据 HTTP 包 MIME 信息来智能判断，比如XML MIME类型就被识别为XML。
         headers:{
             'token':thistoken
@@ -127,21 +134,21 @@ getBasicInfo = function(){
             // self.location.href="home.html"
         }
     });
-    $("#currentPage").val(eval(page)+1);    
+    // $("#currentPage").val(eval(page)+1);
 }
 
 changePage=function(direction){
     if(direction === -1){
-        var page = localStorage.getItem("page");
+        var page = localStorage.getItem("searchPage");
         page = eval(page) - 1;
-        localStorage.setItem("page", page);
+        localStorage.setItem("searchPage", page);
     }
     else{
-        var page = localStorage.getItem("page");
+        var page = localStorage.getItem("searchPage");
         page = eval(page) + 1;
-        localStorage.setItem("page", page);
+        localStorage.setItem("searchPage", page);
     }
-    self.location.href="home.html";
+    getBasicInfoBySearch();
 }
 
 setBasic=function(){
@@ -187,4 +194,29 @@ renderBasicNotify = function(Data){
     $("#notification").html(html);
     localStorage.setItem("NotifyContent",html);
     localStorage.setItem("UnreadNotifyNum",Data.Unread);
+}
+
+getQueryVariable=function(variable){
+    var query = window.location.search.substring(1);
+    var vars = query.split("&");
+    console.log(vars);
+    for (var i = 0; i < vars.length; i++) {
+            var pair = vars[i].split("=");
+            console.log(pair[0]," ", pair[1]);
+            if(pair[0] === variable){
+                return pair[1];
+            }
+    }
+    return(false);
+}
+
+getQ = function(){
+    let temp = getQueryVariable("q");
+    if(temp === false || temp === null || temp === undefined){
+        alert("请输入搜索关键词");
+        self.location.href = "home.html";
+    }
+    else{
+        return temp;
+    }
 }

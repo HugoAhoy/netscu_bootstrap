@@ -14,6 +14,7 @@ $(function()
         url = localStorage.getItem("url");
         // alert(url);
         getBasicNotifyFromStorage();
+        setBasic();
     }
 });
 
@@ -32,4 +33,12 @@ gotoChannel=function(id){
     localStorage.setItem("channelId", id);
     localStorage.setItem("channelPage","1");
     self.location.href="channelDetail.html";
+}
+
+setBasic=function(){
+    var username = localStorage.getItem("username");
+    var user = "<a style=\"cursor:default;\"><strong>"+username+"</strong></a>";
+    console.log(username);
+    console.log(user);
+    $("li#userinfo").html(user);
 }

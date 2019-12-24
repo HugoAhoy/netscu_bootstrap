@@ -8,10 +8,11 @@
         <link rel="stylesheet" type="text/css" href="assets/css/material-design.css">
         <link rel="stylesheet" type="text/css" href="assets/css/small-n-flat.css">
         <link rel="stylesheet" type="text/css" href="assets/css/font-awesome.min.css">
-        <link rel="stylesheet" type="text/css" href="assets/css/summernote.css">
+        <link rel="stylesheet" type="text/css" href="assets/css/netscu.css">
         <title>NETSCU</title>
     </head>
     <body class="cm-no-transition cm-1-navbar">
+        <!-- <input type="hidden" id="currentPage" value="1"> -->
         <div id="cm-menu">
             <nav class="cm-navbar cm-navbar-primary">
                 <div class="cm-flex"><a href="home.html"></a><h1>NETSCU</h1></div>
@@ -21,8 +22,8 @@
                 <div id="cm-menu-items-wrapper">
                     <div id="cm-menu-scroller">
                         <ul class="cm-menu-items">
-                            <li><a href="home.html" class="sf-house">首页</a></li>
-                            <li class="active"><a href="channel.html" class="sf-brick">板块</a></li>
+                            <li class="active"><a href="home.html" class="sf-house">首页</a></li>
+                            <li><a href="channel.html" class="sf-brick">板块</a></li>
                             <li><a href="notepad.html" class="sf-notepad">发帖</a></li>
                             <li><a href="message.html" class="sf-box-full">消息</a></li>
                             <li><a href="mine.html" class="sf-user-id">我的</a></li>
@@ -31,20 +32,21 @@
                 </div>
             </div>
         </div>
+
         <header id="cm-header">
             <nav class="cm-navbar cm-navbar-primary">
                 <div class="btn btn-primary md-menu-white hidden-md hidden-lg" data-toggle="cm-menu"></div>
                 <div class="cm-flex">
-                    <h1>编辑帖子</h1> 
-                    <form id="cm-search" action="index.html" method="get">
-                        <input type="search" name="q" autocomplete="off" placeholder="找个帖子...">
+                    <h1>搜索结果</h1> 
+                    <form id="cm-search" action="search.html" method="get">
+                        <input type="search" name="q" autocomplete="off" placeholder="找些帖子...">
                     </form>
                 </div>
                 <div class="pull-right">
                     <div id="cm-search-btn" class="btn btn-primary md-search-white" data-toggle="cm-search"></div>
                 </div>
                 <div class="dropdown pull-right">
-                    <button class="btn btn-primary md-notifications-white" data-toggle="dropdown"> <span id="Unread" class="label label-danger"></span> </button>
+                    <button class="btn btn-primary md-notifications-white" data-toggle="dropdown"> <span id="UnreadNum" class="label label-danger"></span> </button>
                     <div class="popover cm-popover bottom">
                         <div class="arrow"></div>
                         <div class="popover-content">
@@ -66,12 +68,20 @@
                                         <i class="fa fa-fw fa-warning"></i> Holy guacamole !
                                     </h4>
                                     <p class="list-group-item-text">Best check yo self, you're not looking too good.</p>
+                                </a>
+                                <a href="#" class="list-group-item">
+                                    <h4 class="list-group-item-heading">
+                                        <i class="fa fa-fw fa-envelope"></i> Aliquam orci lectus
+                                    </h4>
+                                    <p class="list-group-item-text">Donec quis arcu non risus sagittis</p>
                                 </a> -->
+
                             </div>
                             <div style="padding:10px"><a class="btn btn-success btn-block" href="message.html">查看所有</a></div>
                         </div>
                     </div>
                 </div>
+
                 <div class="dropdown pull-right">
                     <button class="btn btn-primary md-account-circle-white" data-toggle="dropdown"></button>
                     <ul class="dropdown-menu">
@@ -83,37 +93,37 @@
                             <a href="mine.html"><i class="fa fa-fw fa-user"></i> 我的</a>
                         </li>
                         <!-- <li>
-                            <a href="setting.html"><i class="fa fa-fw fa-cog"></i> Settings</a>
+                            <a href="setting.html"><i class="fa fa-fw fa-cog"></i> 编辑信息</a>
                         </li> -->
                         <li>
-                            <a href="login.html"><i class="fa fa-fw fa-sign-out"></i> Sign out</a>
+                            <a href="login.html"><i class="fa fa-fw fa-sign-out"></i> 退出登录</a>
                         </li>
                     </ul>
                 </div>
+
             </nav>
-        </header>
-        <div id="global">
-            <div class="container-fluid">
-                <div class="panel panel-default">
-                    <div class="panel-heading">重新编辑你的想法</div>
-                    <div class="panel-body">
-                        <div class="form-group">
-                            <label>标题</label>
-                            <input id="postTitle" type="text" class="form-control" placeholder="输入标题">
-                            <label>板块</label>
-                            <select id="CateSel" class="form-control">
-                                <option value="1">生活</option>
-                                <option value="2">技术</option>
-                                <option value="3">文学</option>
-                                <option value="4">比赛</option>
-                            </select>
-                        </div>
-                        <label>内容</label>
-                        <div id="summernote"></div>
-                        <div class="form-group text-right" style="margin-top:20px">
-                            <button onclick="submitPost()" type="button" class="btn btn-primary">发布</button>
+
+            <!-- toggle -->
+            <!-- <nav class="cm-navbar cm-navbar-default cm-navbar-slideup">
+                    <div class="cm-flex">
+                        <div class="nav-tabs-container">
+                            <ul class="nav nav-tabs">
+                                <li class="active"><a href="#lorem" data-toggle="tab">Pellentesque</a></li>
+                                <li><a href="#ipsum" data-toggle="tab">habitant morbi</a></li>
+                                <li><a href="#dolor" data-toggle="tab">malesuada</a></li>
+                            </ul>
                         </div>
                     </div>
+                </nav> -->
+    
+        </header>
+        <div id="global">
+            <!-- <div class="container-fluid cm-container-white">
+                <h4></h4>
+                <p>Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Vestibulum tortor quam, feugiat vitae, ultricies eget, tempor sit amet, ante. Donec eu libero sit amet quam egestas semper. Aenean ultricies mi vitae est. Mauris placerat eleifend leo. Quisque sit amet est et sapien ullamcorper pharetra. Vestibulum erat wisi, condimentum sed, commodo vitae, ornare sit amet, wisi. Aenean fermentum, elit eget tincidunt condimentum, eros ipsum rutrum orci, sagittis tempus lacus enim ac dui. Donec non enim in turpis pulvinar facilisis. Ut felis.</p>
+            </div> -->
+            <div class="container-fluid">
+                <div id="PostBasicContents" class="row cm-fix-height">
                 </div>
             </div>
             <footer class="cm-footer"><span class="pull-left">Made By HugoAhoy</span><span class="pull-right">&copy; Copyright</span></footer>
@@ -124,7 +134,7 @@
         <script src="assets/js/fastclick.min.js"></script>
         <script src="assets/js/bootstrap.min.js"></script>
         <script src="assets/js/clearmin.min.js"></script>
-        <script src="assets/js/summernote.min.js"></script>
-        <script src="js/editpost.js"></script>
+        <script src="assets/js/demo/home.js"></script>
+        <script src="js/search.js"></script>
     </body>
 </html>

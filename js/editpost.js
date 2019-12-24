@@ -13,7 +13,7 @@ $(function(){
     else{
         url = localStorage.getItem("url");
         $('#summernote').summernote({
-            height: ($(window).height() - 500),
+            height: ($(window).height() - 300),
             toolbar: [
                 ['style', ['style']],
                     ['font', ['bold', 'italic', 'underline']],

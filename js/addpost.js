@@ -7,7 +7,7 @@ $(function(){
     getBasicNotifyFromStorage();
 
     $('#summernote').summernote({
-	height: ($(window).height() - 500),
+	height: ($(window).height() - 300),
 	toolbar: [
 	    ['style', ['style']],
             ['font', ['bold', 'italic', 'underline']],
@@ -19,7 +19,17 @@ $(function(){
 
     });    
     
+    setBasic();    
 });
+
+
+setBasic=function(){
+    var username = localStorage.getItem("username");
+    var user = "<a style=\"cursor:default;\"><strong>"+username+"</strong></a>";
+    console.log(username);
+    console.log(user);
+    $("li#userinfo").html(user);
+}
 
 submitPost=function (){
     var title = $("#postTitle").val();

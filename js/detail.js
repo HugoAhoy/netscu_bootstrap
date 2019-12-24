@@ -113,6 +113,10 @@ renderDetail = function(data){
     
     // 渲染内容    
     var content = "<div class=\"panel panel-default\">";
+    content += "    <div class=\"panel-heading\" onclick=\"gotoUser("+data.uid+")\">";
+    content += data.name;
+    content += "    </div>";
+
     content += "<div class=\"panel-body\">";
     content += data.content;
     content += "<br><span style=\"color: rgb(200,200,200)\">发布于"+getNormalTime(data.createTime)+"</span>"
@@ -221,7 +225,7 @@ renderSupport=function(data){
     var commentNum;
     for(var i = 0; i < trueData.length; i++){
         content += "<div class=\"panel panel-default\">";
-        content += "    <div class=\"panel-heading\">";
+        content += "    <div class=\"panel-heading\" onclick=\"gotoUser("+trueData[i].uid+")\">";
         content += trueData[i].name;
         content += "    </div>";
         content += "        <div class=\"panel-body\" onclick=\"showComment("+trueData[i].id+")\">";
@@ -262,8 +266,37 @@ renderSupport=function(data){
 		content += "    </div>";
         content += "</div>";
     }
+
+    if(trueData.length === 0){
+        content ="暂无回帖";
+    }
+    else{
+        content +="<ul class=\"pager\">";
+        var currenPage = localStorage.getItem("page");
+        if(currenPage !== "1"){
+            content +="<li><a href=\"javascript:changePage(-1);\">&laquo;</a></li>";
+        }
+        if(data.Finish !== true){
+            content +="<li><a href=\"javascript:changePage(1);\">&raquo;</a></li>";
+        }
+        content +="</ul>";    
+    }
     console.log(content);
     $("#Support").html(content);
+}
+
+changePage = function(direction){
+    if(direction === -1){
+        var page = localStorage.getItem("supportPage");
+        page = eval(page) - 1;
+        localStorage.setItem("supportPage", page);
+    }
+    else{
+        var page = localStorage.getItem("supportPage");
+        page = eval(page) + 1;
+        localStorage.setItem("supportPage", page);
+    }
+    getSupport();
 }
 
 rerenderComment = function(id){
@@ -625,4 +658,8 @@ deleteSupport = function(id){
     else {
         ;
     }
+}
+
+gotoUser = function(id){
+    self.location.href = "mine.html?uid="+id;
 }

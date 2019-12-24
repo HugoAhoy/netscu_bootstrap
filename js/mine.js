@@ -318,11 +318,11 @@ renderUserInfo=function(data){
     }
     else{
         if(data.followed){
-            var html ="<div class=\"btn btn-default\" style=\"background:#eee; margin-right:35px;  border-radius: 15px;\">已关注</div>";
+            var html ="<div class=\"btn btn-default\" style=\"background:#eee; margin-right:35px;  border-radius: 15px;\" onclick=\"unfollow("+data.id+")\">已关注</div>";
             $("#followBtnArea").html(html);
         }
         else{
-            var html ="<div class=\"btn btn-primary\" style=\"margin-right:35px; border-radius: 15px;\">关注</div>";
+            var html ="<div class=\"btn btn-primary\" style=\"margin-right:35px; border-radius: 15px;\" onclick=\"follow("+data.id+")\">关注</div>";
             $("#followBtnArea").html(html);
         }
     }
@@ -347,4 +347,60 @@ gotoFan = function(){
     }
     self.location.href= gotoUrl;
 
+}
+
+unfollow = function(id){
+    var thistoken = localStorage.getItem("token");
+    var postData = {
+        "id":id
+    }
+
+    $.ajax({
+        type:"POST", 
+        url:url+"/User/Unfollow",
+        contentType:"application/json",  //发送信息至服务器时内容编码类型。                     
+        dataType:"json",  // 预期服务器返回的数据类型。如果不指定，jQuery 将自动根据 HTTP 包 MIME 信息来智能判断，比如XML MIME类型就被识别为XML。
+        data:JSON.stringify(postData),
+        headers:{
+            'token':thistoken
+        },
+        success:function(data, status){ 
+            console.log("data= ",data, "status=", status);
+            if(data.success === true){
+                var html = "<div class=\"btn btn-primary\" style=\"margin-right:35px; border-radius: 15px;\" onclick=\"follow("+id+")\">关注</div>";
+                $("#followBtnArea").html(html);            
+            }
+            else{
+                // alert("失败")
+            }
+        }
+    });
+}
+
+follow = function(id){
+    var thistoken = localStorage.getItem("token");
+    var postData = {
+        "id":id
+    }
+
+    $.ajax({
+        type:"POST", 
+        url:url+"/User/Follow",
+        contentType:"application/json",  //发送信息至服务器时内容编码类型。                     
+        dataType:"json",  // 预期服务器返回的数据类型。如果不指定，jQuery 将自动根据 HTTP 包 MIME 信息来智能判断，比如XML MIME类型就被识别为XML。
+        data:JSON.stringify(postData),
+        headers:{
+            'token':thistoken
+        },
+        success:function(data, status){ 
+            console.log("data= ",data, "status=", status);
+            if(data.success === true){
+                var html = "<div class=\"btn btn-default\" style=\"background:#eee; margin-right:35px;  border-radius: 15px;\" onclick=\"unfollow("+id+")\">已关注</div>";
+                $("#followBtnArea").html(html);
+            }
+            else{
+                // alert("失败")
+            }
+        }
+    });
 }

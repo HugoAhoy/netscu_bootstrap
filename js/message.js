@@ -16,6 +16,7 @@ $(function()
         // alert(url);
         getBasicNotifyFromStorage();
         getMyNotification();
+        setBasic();
     }
 });
 
@@ -120,6 +121,15 @@ setRead=function(id){
         }
     });
 }
+
+setBasic=function(){
+    var username = localStorage.getItem("username");
+    var user = "<a style=\"cursor:default;\"><strong>"+username+"</strong></a>";
+    console.log(username);
+    console.log(user);
+    $("li#userinfo").html(user);
+}
+
 
 readToggle = function(id){
     var Unread = localStorage.getItem("UnreadNotifyNum");
