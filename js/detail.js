@@ -390,8 +390,8 @@ addSupport=function(){
             $("#supportContent").val("");
             localStorage.setItem("token", thistoken);
             localStorage.setItem("supportPage","1");
-            getSupport();
             $("#supportToggle").click();
+            getSupport();
         }
     });
 }

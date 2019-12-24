@@ -12,7 +12,6 @@
         <title>NETSCU</title>
     </head>
     <body class="cm-no-transition cm-1-navbar">
-        <!-- <input type="hidden" id="currentPage" value="1"> -->
         <div id="cm-menu">
             <nav class="cm-navbar cm-navbar-primary">
                 <div class="cm-flex"><a href="home.html"></a><h1>NETSCU</h1></div>
@@ -37,7 +36,7 @@
             <nav class="cm-navbar cm-navbar-primary">
                 <div class="btn btn-primary md-menu-white hidden-md hidden-lg" data-toggle="cm-menu"></div>
                 <div class="cm-flex">
-                    <h1>首页</h1> 
+                    <h1>版内帖子</h1> 
                     <form id="cm-search" action="search.html" method="get">
                         <input type="search" name="q" autocomplete="off" placeholder="找些帖子...">
                     </form>
@@ -90,11 +89,11 @@
                         </li>
                         <li class="divider"></li>
                         <li>
-                            <a href="profile.html"><i class="fa fa-fw fa-user"></i> 个人信息</a>
+                            <a href="mine.html"><i class="fa fa-fw fa-user"></i> 我的</a>
                         </li>
-                        <li>
+                        <!-- <li>
                             <a href="setting.html"><i class="fa fa-fw fa-cog"></i> 编辑信息</a>
-                        </li>
+                        </li> -->
                         <li>
                             <a href="login.html"><i class="fa fa-fw fa-sign-out"></i> 退出登录</a>
                         </li>
@@ -118,13 +117,7 @@
     
         </header>
         <div id="global">
-            <div class="container-fluid cm-container-white">
-                <h3>版块名</h3>
-                <hr>
-                <h4>生活是人类活着的期间所做的一切行为的总称。在本版块，您可以分享在川大生活中的趣事。</h4>
-                <h4>在最广泛的意义上，是任何单一的书面作品。在本版块，您可以分享您的阅读笔记或是给坛友们推荐一本好书</h4>
-                <h4>技术可以指人类对机器、硬体或人造器皿的運用，但它也可以包含更广的架构，如系統、组织方法学和技巧。在本版块，您可以交流您学习技术的心得或是向坛友们推荐一些新技术</h4>
-                <h4>川大校内外有很多比赛需要募集志同道合的队员。在本版块，您可以发布比赛消息吸引川大同学们参与，也可以发布招募队员信息，共同参与比赛或项目。</h4>
+            <div class="container-fluid cm-container-white" id="ChannelInfo">
                 <!-- <p>Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Vestibulum tortor quam, feugiat vitae, ultricies eget, tempor sit amet, ante. Donec eu libero sit amet quam egestas semper. Aenean ultricies mi vitae est. Mauris placerat eleifend leo. Quisque sit amet est et sapien ullamcorper pharetra. Vestibulum erat wisi, condimentum sed, commodo vitae, ornare sit amet, wisi. Aenean fermentum, elit eget tincidunt condimentum, eros ipsum rutrum orci, sagittis tempus lacus enim ac dui. Donec non enim in turpis pulvinar facilisis. Ut felis.</p> -->
             </div>
             <div class="container-fluid">
@@ -140,6 +133,6 @@
         <script src="assets/js/bootstrap.min.js"></script>
         <script src="assets/js/clearmin.min.js"></script>
         <script src="assets/js/demo/home.js"></script>
-        <script src="js/homepage.js"></script>
+        <script src="js/channelDetail.js"></script>
     </body>
 </html>
